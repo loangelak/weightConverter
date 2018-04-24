@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Weight Converter | Horizontal Form</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class='container'>
+            <h2>Weight Converter</h2>
+            <p style="margin-left:8px;margin-bottom:50px">Type a value in any of the fields to convert between weight measurements:</p>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class='col-sm-2 control-label'>Pounds</label>
+                    <div class='col-sm-10'>
+                        <input id="inputPounds" class="form-control" type="number" placeholder="Pounds" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class='col-sm-2 control-label'>Kilograms</label>
+                    <div class='col-sm-10'>
+                        <input id="inputKilograms" class="form-control" type="number" placeholder="Kilograms" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class='col-sm-2 control-label'>Ounces</label>
+                    <div class='col-sm-10'>
+                        <input id="inputOunces" class="form-control" type="number" placeholder="Ounces" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class='col-sm-2 control-label'>Grams</label>
+                    <div class='col-sm-10'>
+                        <input id="inputGrams" class="form-control" type="number" placeholder="Grams" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class='col-sm-2 control-label'>Stones</label>
+                    <div class='col-sm-10'>
+                        <input id="inputStones" class="form-control" type="number" placeholder="Stones" oninput="weightConverter(this.id,this.value)" onchange="weightConverter(this.id,this.value)">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+<script>
+function weightConverter(source,valNum) {
+  valNum = parseFloat(valNum);
+  var inputPounds = document.getElementById("inputPounds");
+  var inputKilograms = document.getElementById("inputKilograms");
+  var inputOunces = document.getElementById("inputOunces");
+  var inputGrams = document.getElementById("inputGrams");
+  var inputStones = document.getElementById("inputStones");
+  if (source=="inputPounds") {
+    inputKilograms.value=(valNum/2.2046).toFixed(2);
+    inputOunces.value=(valNum*16).toFixed(2);
+    inputGrams.value=(valNum/0.0022046).toFixed();
+    inputStones.value=(valNum*0.071429).toFixed(3);
+  }
+  if (source=="inputKilograms") {
+    inputPounds.value=(valNum*2.2046).toFixed(2);
+    inputOunces.value=(valNum*35.274).toFixed(2);
+    inputGrams.value=(valNum*1000).toFixed();
+    inputStones.value=(valNum*0.1574).toFixed(3);
+  }
+  if (source=="inputOunces") {
+    inputPounds.value=(valNum*0.062500).toFixed(4);
+    inputKilograms.value=(valNum/35.274).toFixed(4);
+    inputGrams.value=(valNum/0.035274).toFixed(1);
+    inputStones.value=(valNum*0.0044643).toFixed(4);
+  }
+  if (source=="inputGrams") {
+    inputPounds.value=(valNum*0.0022046).toFixed(4);
+    inputKilograms.value=(valNum/1000).toFixed(4);
+    inputOunces.value=(valNum*0.035274).toFixed(3);
+    inputStones.value=(valNum*0.00015747).toFixed(5);
+  }
+  if (source=="inputStones") {
+    inputPounds.value=(valNum*14).toFixed(1);
+    inputKilograms.value=(valNum/0.15747).toFixed(1);
+    inputOunces.value=(valNum*224).toFixed();
+    inputGrams.value=(valNum/0.00015747).toFixed();
+  }
+
+}
+</script>
+</body>
+</html>
